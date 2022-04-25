@@ -1,4 +1,3 @@
-
-export const isPromise = (value: any): value is Promise<any> => (
-  Boolean(value && typeof value.then === "function")
+export const isPromise = <T = any>(value: T): value is T => (
+  Boolean(value && typeof (value as any).then === "function")
 );
