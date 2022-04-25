@@ -2,6 +2,22 @@
   "name": "noteway-client",
   "version": "0.1.0",
   "private": true,
+  "description": "👻 noteway frontend app, a collaborative notes-taking platform for creating, collaborating, reading & managing notes e.t.c",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huboh/noteway-client.git"
+  },
+  "keywords": [
+    "api",
+    "graphql",
+    "apollo"
+  ],
+  "author": "huboh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huboh/noteway-client/issues"
+  },
+  "homepage": "https://github.com/huboh/noteway-client#readme",
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@testing-library/jest-dom": "^5.16.4",
