@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/huboh/noteway-client/issues"
   },
-  "homepage": "https://github.com/huboh/noteway-client#readme",
+  "homepage": "/",
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@testing-library/jest-dom": "^5.16.4",
