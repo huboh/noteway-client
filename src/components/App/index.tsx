@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 import AppProviders from '../../providers';
 
+import * as constants from "../../constants";
+
 // views
 import Login from "../../views/Auth/Login";
 import Signup from "../../views/Auth/Signup";
@@ -13,9 +15,9 @@ const App: FC = () => {
   return (
     <AppProviders>
       <Routes>
-        <Route path='/' element={ <Protected /> } />
-        <Route path='/login' element={ <Login /> } />
-        <Route path='/signup' element={ <Signup /> } />
+        <Route path={ constants.SIGNUP_ROUTE } element={ <Signup /> } />
+        <Route path={ constants.LOGIN_ROUTE } element={ <Login /> } />
+        <Route path={ constants.HOME_ROUTE } element={ <Protected /> } />
       </Routes>
     </AppProviders>
   );
