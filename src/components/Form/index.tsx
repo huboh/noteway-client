@@ -1,3 +1,4 @@
+import './form.scss';
 import { FC, useState, useRef, ReactElement, FormEvent } from "react";
 
 export interface FormState {
@@ -6,13 +7,13 @@ export interface FormState {
 
 export interface FormProps {
   className?: string;
-  render(state: FormState): ReactElement;
+  fields(state: FormState): ReactElement;
   onSubmit?(form: { [k: string]: FormDataEntryValue; }): any;
 }
 
 
 const Form: FC<FormProps> = (props) => {
-  const { className, onSubmit, render, children } = props;
+  const { className, onSubmit, fields, children } = props;
 
   const formRef = useRef<HTMLFormElement>(null);
   const [state, setState] = useState<FormState>({ isSubmitting: false });
@@ -38,9 +39,9 @@ const Form: FC<FormProps> = (props) => {
       ref={ formRef }
       method="POST"
       onSubmit={ handleSubmit }
-      className={ `${className ? className : ''}`.trim() }
+      className={ `form ${className ? className : ''}`.trim() }
     >
-      { render(state) || children }
+      { fields(state) || children }
     </form>
   );
 };
