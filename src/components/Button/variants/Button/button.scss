@@ -1,0 +1,51 @@
+.button {
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+
+  padding: 0.4em 1.2em;
+  width: max-content;
+
+  color: var(--background-color);
+  background-color: var(--primary-color);
+  transition: background-color 0.2s, transform 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text-wrapper {
+    margin: 0;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .icon-wrapper {
+    width: 1.4rem;
+    margin-inline-start: 0.4em;
+
+    & > * {
+      width: 100%;
+      height: 100%;
+      fill: var(--background-color);
+      transition: fill 0.2s ease;
+    }
+  }
+
+  &.invert-style {
+    border: 2px solid;
+    padding: 0.55em 1em;
+    background-color: transparent;
+    border-color: var(--primary-color);
+    transition: background-color 0.2s;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: var(--primary-color-dark);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+}

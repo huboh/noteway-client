@@ -1,0 +1,17 @@
+.button.button-link {
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+
+  padding: 0.5em 1.4em;
+  width: max-content;
+
+  font-size: 1rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  // color: var(--background-color);
+  // background-color: var(--primary-color);
+  // transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
