@@ -1,6 +1,6 @@
 import './form-button.scss';
 import { FC } from "react";
-import Button, { ButtonProps } from "../../Button/variants/Button";
+import Button, { ButtonProps } from "../../../Button/variants/Button";
 
 export interface FormButtonProps extends ButtonProps { }
 

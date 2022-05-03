@@ -1,6 +1,6 @@
 import './form-field.scss';
 import { MdCheckCircle } from 'react-icons/md';
-import { FC, useState, HTMLInputTypeAttribute, FormEvent, ReactNode } from "react";
+import { FC, useState, useRef, useEffect, HTMLInputTypeAttribute, FormEvent, ReactNode } from "react";
 
 
 export type FieldError = { message: string; } | null;
@@ -11,6 +11,7 @@ export interface FormFieldProps {
   id: string;
   name: string;
   label?: string;
+  isFocused?: boolean;
   icon?: ReactNode;
   required?: boolean;
   placeholder?: string;
@@ -24,6 +25,8 @@ export interface FormFieldProps {
 const defaultState: FieldState = { value: '', isValid: false, error: null };
 
 const FormField: FC<FormFieldProps> = (props) => {
+  const { labelLink, isFocused, ...rest } = props;
+  const inputRef = useRef<HTMLInputElement>(null);
   const [fieldState, setfieldState] = useState(defaultState);
   const fieldClass = `form-field ${fieldState.error ? 'invalid' : ''}`.trim();
 
@@ -41,6 +44,8 @@ const FormField: FC<FormFieldProps> = (props) => {
     }));
   };
 
+  useEffect(() => { isFocused && inputRef.current?.focus?.(); }, [isFocused]);
+
   return (
     <div className={ fieldClass } >
       <span className='form-label-wrapper'>
@@ -49,13 +54,14 @@ const FormField: FC<FormFieldProps> = (props) => {
         </label>
 
         <span className='form-label-link'>
-          { props.labelLink }
+          { labelLink }
         </span>
       </span>
 
       <div className="form-input-wrapper">
         <input
-          { ...props }
+          { ...rest }
+          ref={ inputRef }
           value={ fieldState.value }
           className={ "form-input" }
           onInput={ handleInput }
