@@ -1,5 +1,9 @@
 import './form.scss';
-import { FC, useState, useRef, ReactElement, FormEvent } from "react";
+import { FC, Dispatch, SetStateAction, useState, useRef, ReactElement, FormEvent } from "react";
+
+export type errorSetter = Dispatch<SetStateAction<boolean>>;
+
+export type Fields = (state: FormState, setter?: errorSetter) => ReactElement;
 
 export interface FormState {
   isSubmitting: boolean;
@@ -7,26 +11,25 @@ export interface FormState {
 
 export interface FormProps {
   className?: string;
-  fields(state: FormState): ReactElement;
-  onSubmit?(form: { [k: string]: FormDataEntryValue; }): any;
+  fields: Fields;
+  onSubmit?(form: { [k: string]: FormDataEntryValue; }, hasError: boolean): any;
 }
 
 
 const Form: FC<FormProps> = (props) => {
-  const { className, onSubmit, fields, children } = props;
-
   const formRef = useRef<HTMLFormElement>(null);
+  const [hasError, setHasError] = useState(false);
   const [state, setState] = useState<FormState>({ isSubmitting: false });
 
   const handleSubmit = async (event: FormEvent) => {
-    if (onSubmit) {
+    if (props.onSubmit && !hasError) {
       event.preventDefault();
       setState((prevState) => ({ ...prevState, isSubmitting: true }));
 
       try {
         const formData = new FormData(formRef.current!);
         const entries = Object.fromEntries(formData.entries());
-        await onSubmit(entries);
+        await props.onSubmit(entries, hasError);
 
       } catch { } finally {
         setState((prevState) => ({ ...prevState, isSubmitting: false }));
@@ -36,12 +39,12 @@ const Form: FC<FormProps> = (props) => {
 
   return (
     <form
-      ref={ formRef }
       method="POST"
+      ref={ formRef }
       onSubmit={ handleSubmit }
-      className={ `form ${className ? className : ''}`.trim() }
+      className={ `form ${props.className || ''}`.trim() }
     >
-      { fields(state) || children }
+      { props.fields?.(state) || props.children }
     </form>
   );
 };
