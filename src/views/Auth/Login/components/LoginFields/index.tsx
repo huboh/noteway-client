@@ -3,7 +3,7 @@ import { MdLogin } from 'react-icons/md';
 import * as utils from '../../../utils';
 import * as constants from '../../../../../constants';
 
-import { FormState } from "../../../../../components/Form";
+import { Fields } from "../../../../../components/Form";
 import StyledLink from '../../../../../components/StyledLink';
 import FormTitle from '../../../../../components/Form/components/FormTitle';
 import FormField from "../../../../../components/Form/components/FormField";
@@ -12,7 +12,7 @@ import PasswordField from '../../../../../components/Form/components/PasswordFie
 import FormDescription from '../../../../../components/Form/components/FormDescription';
 
 
-const LoginFields = ({ isSubmitting }: FormState) => {
+const LoginFields: Fields = ({ isSubmitting }) => {
   return (
     <>
       <FormTitle text='welcome back !!!' />

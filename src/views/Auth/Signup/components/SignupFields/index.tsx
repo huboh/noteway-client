@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as utils from '../../../utils';
 
-import { FormState } from "../../../../../components/Form";
+import { Fields } from "../../../../../components/Form";
 import FormTitle from '../../../../../components/Form/components/FormTitle';
 import FormField from "../../../../../components/Form/components/FormField";
 import FormButton from "../../../../../components/Form/components/FormButton";
@@ -9,7 +9,7 @@ import PasswordField from '../../../../../components/Form/components/PasswordFie
 import FormDescription from '../../../../../components/Form/components/FormDescription';
 
 
-const LoginFields = ({ isSubmitting }: FormState) => {
+const LoginFields: Fields = ({ isSubmitting }) => {
   const [password, setPassword] = useState('');
 
   return (
