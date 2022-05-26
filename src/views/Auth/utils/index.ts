@@ -1,21 +1,31 @@
 import validator from 'validator';
+import * as formTypes from '../../../components/Form/types';
 
-export const validateEmail = (email: string) => {
+
+export const validateEmail: formTypes.FieldValidator = (email) => {
   const isValidEmail = validator.isEmail(email);
+  const isEmpty = !email;
+
+  const errorMessage = isEmpty ? 'email is required' : (
+    isValidEmail ? null : 'hmm, that email dosen\'t look right'
+  );
 
   return {
     isValid: isValidEmail,
-    error: isValidEmail ? null : 'invalid email address',
+    error: errorMessage,
   };
 };
 
-export const validatePassword = (password: string) => {
+export const validatePassword: formTypes.FieldValidator = (password: string) => {
   const minPasswordLength = 6;
   const isLessThan = password?.length < minPasswordLength;
+  const isEmpty = !password;
 
-  const errorMssg = isLessThan
-    ? `minimum password length is ${minPasswordLength}`
-    : 'password should contain at least 1 Uppercase, Lowercase letter & a symbol';
+  const errorMssg = isEmpty ? 'password is required' : (
+    isLessThan
+      ? `minimum password length is ${minPasswordLength}`
+      : 'password should contain at least 1 Uppercase, Lowercase letter & a symbol'
+  );
 
   const isValidPassword = validator.isStrongPassword(password, {
     minLength: minPasswordLength,
@@ -32,10 +42,15 @@ export const validatePassword = (password: string) => {
 };
 
 export const comparePassword = (oldpassword: string, newPassword: string) => {
-  const passwordsMatch = oldpassword === newPassword;
+  const isEmpty = !newPassword;
+  const passwordsMatch = !isEmpty && oldpassword === newPassword;
+
+  const errorMessage = isEmpty ? 'this field is required' : (
+    passwordsMatch ? null : 'password does not match'
+  );
 
   return {
     isValid: passwordsMatch,
-    error: passwordsMatch ? null : 'password does not match',
+    error: errorMessage,
   };
 };
