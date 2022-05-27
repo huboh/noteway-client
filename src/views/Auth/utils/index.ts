@@ -24,15 +24,15 @@ export const validatePassword: formTypes.FieldValidator = (password: string) => 
   const errorMssg = isEmpty ? 'password is required' : (
     isLessThan
       ? `minimum password length is ${minPasswordLength}`
-      : 'password should contain at least 1 Uppercase, Lowercase letter & a symbol'
+      : 'password should contain at least 1 Uppercase, Lowercase letter & a Number'
   );
 
   const isValidPassword = validator.isStrongPassword(password, {
     minLength: minPasswordLength,
     minUppercase: 1,
     minLowercase: 1,
-    minSymbols: 1,
-    minNumbers: 0,
+    minSymbols: 0,
+    minNumbers: 1,
   });
 
   return {
