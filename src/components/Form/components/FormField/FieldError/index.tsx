@@ -1,8 +1,7 @@
 import { FC } from 'react';
-import { FieldState } from '../';
 
 export interface FieldErrorProps {
-  error: FieldState['error'];
+  error?: string | null;
 }
 
 
