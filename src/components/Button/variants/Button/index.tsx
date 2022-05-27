@@ -13,14 +13,14 @@ export interface ButtonProps {
 }
 
 
-const Button: FC<ButtonProps> = ({ label, type, ...props }) => {
+const Button: FC<ButtonProps> = (props) => {
   let [isDisabled, setIsDisabled] = useState(props.disabled);
 
   // ? if no onClick handler is given there is no way for the state to change, so i default to the passed in `disabled` props
   isDisabled = props.onClick ? isDisabled : props.disabled;
 
+  const type = props.type || 'button';
   const className = props.className || '';
-  const icon = props.showSpinner ? <BiLoaderCircle className="button-spinner" /> : props.icon;
 
   // handler
   const onClickHandler = async () => {
@@ -36,9 +36,13 @@ const Button: FC<ButtonProps> = ({ label, type, ...props }) => {
   };
 
   return (
-    <button className={ `button ${className}`.trim() } onClick={ onClickHandler } type={ type || "button" } disabled={ isDisabled } >
-      { label && <span className="text-wrapper">{ label }</span> }
-      { icon && <span className="icon-wrapper">{ icon }</span> }
+    <button className={ `button ${className}`.trim() } onClick={ onClickHandler } type={ type } disabled={ isDisabled } >
+      { props.showSpinner ? <BiLoaderCircle className="button-spinner" /> : (
+        <>
+          { props.label && <span className="text-wrapper">{ props.label }</span> }
+          { props.icon && <span className="icon-wrapper">{ props.icon }</span> }
+        </>
+      ) }
     </button>
   );
 };
