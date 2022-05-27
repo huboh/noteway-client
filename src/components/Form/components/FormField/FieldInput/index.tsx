@@ -1,8 +1,7 @@
 import { MdCheckCircle } from 'react-icons/md';
-import { FC, RefObject, FormEventHandler, HTMLInputTypeAttribute, ReactNode } from "react";
+import { FormEventHandler, HTMLInputTypeAttribute, ReactNode, forwardRef } from "react";
 
 export interface FieldInputProps {
-  ref?: RefObject<HTMLInputElement>;
   inputHandler?: FormEventHandler;
   showCheck?: boolean;
   icon?: ReactNode;
@@ -17,23 +16,27 @@ export interface FieldInputProps {
 }
 
 
-const FieldInput: FC<FieldInputProps> = ({ id, name, type, ref, icon, value, showCheck, placeholder, inputHandler }) => (
-  <div className="field-input-wrapper">
-    <input
-      id={ id }
-      ref={ ref }
-      type={ type }
-      name={ name }
-      value={ value }
-      onInput={ inputHandler }
-      placeholder={ placeholder }
-      className={ "field-input" }
-    />
-    <span className='field-input-icon-wrapper'>
-      { icon || (showCheck && <MdCheckCircle />) }
-    </span>
-  </div>
-);
+const FieldInput = forwardRef<HTMLInputElement, FieldInputProps>((props, ref) => {
+  const { id, name, type, icon, value, showCheck, placeholder, inputHandler } = props;
+
+  return (
+    <div className="field-input-wrapper">
+      <input
+        ref={ ref }
+        id={ id }
+        type={ type }
+        name={ name }
+        value={ value }
+        onInput={ inputHandler }
+        placeholder={ placeholder }
+        className={ "field-input" }
+      />
+      <span className='field-input-icon-wrapper'>
+        { icon || (showCheck && <MdCheckCircle />) }
+      </span>
+    </div>
+  );
+});
 
 
 export default FieldInput;

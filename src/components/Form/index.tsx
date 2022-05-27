@@ -1,53 +1,29 @@
 import './form.scss';
-import { FC, Dispatch, SetStateAction, useState, useRef, ReactElement, FormEvent } from "react";
 
-export type errorSetter = Dispatch<SetStateAction<boolean>>;
-
-export type Fields = (state: FormState, setter?: errorSetter) => ReactElement;
-
-export interface FormState {
-  isSubmitting: boolean;
-}
-
-export interface FormProps {
-  className?: string;
-  fields: Fields;
-  onSubmit?(form: { [k: string]: FormDataEntryValue; }, hasError: boolean): any;
-}
+import * as react from "react";
+import * as types from "./types";
+import * as utils from "./utils";
 
 
-const Form: FC<FormProps> = (props) => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [hasError, setHasError] = useState(false);
-  const [state, setState] = useState<FormState>({ isSubmitting: false });
+const FormContext = react.createContext(utils.defaultState);
 
-  const handleSubmit = async (event: FormEvent) => {
-    if (props.onSubmit && !hasError) {
-      event.preventDefault();
-      setState((prevState) => ({ ...prevState, isSubmitting: true }));
 
-      try {
-        const formData = new FormData(formRef.current!);
-        const entries = Object.fromEntries(formData.entries());
-        await props.onSubmit(entries, hasError);
+const Form: react.FC<types.FormProps> = ({ fields, onSubmit, ...props }) => {
+  const [state, setter] = react.useState({ ...utils.defaultState, fields: fields });
 
-      } catch { } finally {
-        setState((prevState) => ({ ...prevState, isSubmitting: false }));
-      }
-    }
-  };
+  const handleChange = react.useCallback(utils.changeHandler(setter), []);
+  const handleSubmit = react.useCallback(utils.submitHandler({ setter, fields: state.fields, onSubmit: onSubmit }), [state.fields]);
+
+  const providerValue = react.useMemo(() => ({ ...state, handleChange }), [state]);
 
   return (
-    <form
-      method="POST"
-      ref={ formRef }
-      onSubmit={ handleSubmit }
-      className={ `form ${props.className || ''}`.trim() }
-    >
-      { props.fields?.(state) || props.children }
-    </form>
+    <FormContext.Provider value={ providerValue }>
+      <form method="POST" { ...props } className={ `form ${props.className || ''}`.trim() } onSubmit={ handleSubmit } >
+        { props.render?.(state) || props.children }
+      </form>
+    </FormContext.Provider>
   );
 };
 
 
-export default Form;
+export { Form as default, FormContext };

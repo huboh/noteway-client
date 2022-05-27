@@ -1,9 +1,8 @@
+import { FC } from 'react';
 import { MdLogin } from 'react-icons/md';
 
-import * as utils from '../../../utils';
 import * as constants from '../../../../../constants';
 
-import { Fields } from "../../../../../components/Form";
 import StyledLink from '../../../../../components/StyledLink';
 import FormTitle from '../../../../../components/Form/components/FormTitle';
 import FormField from "../../../../../components/Form/components/FormField";
@@ -12,11 +11,11 @@ import PasswordField from '../../../../../components/Form/components/PasswordFie
 import FormDescription from '../../../../../components/Form/components/FormDescription';
 
 
-const LoginFields: Fields = ({ isSubmitting }) => {
+const LoginFields: FC = () => {
   return (
     <>
-      <FormTitle text='welcome back !!!' />
-      <FormDescription text='enter your credentials to continue.' />
+      <FormTitle text='welcome back!' />
+      <FormDescription text='log into your account to continue.' />
       <FormField
         required={ true }
         isFocused={ true }
@@ -24,18 +23,17 @@ const LoginFields: Fields = ({ isSubmitting }) => {
         label="email"
         id="login-email"
         placeholder="johndoe@mail.com"
-        onInput={ utils.validateEmail }
       />
       <PasswordField
         required={ true }
         name="password"
         id="login-password"
-        onInput={ utils.validatePassword }
+        label='password'
+        placeholder='password'
         labelLink={ <StyledLink text='forgot password?' to={ constants.FORGOT_PASSWORD_ROUTE } /> }
       />
       <FormButton
         label="login"
-        disabled={ isSubmitting }
         icon={ <MdLogin /> }
       />
     </>

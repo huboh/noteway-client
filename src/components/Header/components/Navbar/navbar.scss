@@ -1,0 +1,15 @@
+.navbar {
+  width: max-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .button {
+    margin-inline-end: 1em;
+
+    &:last-of-type {
+      margin-inline-end: 0;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 .button {
   border: none;
   outline: none;
+  height: 2.4rem;
   border-radius: var(--border-radius);
 
   padding: 0.4em 1.2em;
@@ -32,12 +33,38 @@
     }
   }
 
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .button-spinner {
+    display: block;
+    font-size: 1.4em;
+    transform-origin: center center;
+    animation: rotate 1.3s linear 0s infinite normal forwards;
+  }
+
   &.invert-style {
     border: 2px solid;
     padding: 0.55em 1em;
     background-color: transparent;
     border-color: var(--primary-color);
     transition: background-color 0.2s;
+  }
+
+  &:disabled {
+    cursor: wait;
+    background-color: var(--primary-color-dark);
+
+    &:hover {
+      background-color: var(--primary-color-dark);
+    }
   }
 
   &:hover {
