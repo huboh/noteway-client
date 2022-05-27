@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+  padding: 1em;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  & .navbar {
+    margin-left: auto;
+  }
+}
