@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import SignupIcon from "../../../../../components/Icons/SignupIcon";
 import FormTitle from '../../../../../components/Form/components/FormTitle';
 import FormField from "../../../../../components/Form/components/FormField";
 import FormButton from "../../../../../components/Form/components/FormButton";
@@ -35,6 +36,7 @@ const SignupFields: FC = () => (
     />
     <FormButton
       label="signup"
+      icon={ <SignupIcon /> }
     />
   </>
 );

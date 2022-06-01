@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { MdLogin } from 'react-icons/md';
 
+import PasswordIcon from "../../../../../components/Icons/PasswordIcon";
 import FormTitle from '../../../../../components/Form/components/FormTitle';
 import FormField from "../../../../../components/Form/components/FormField";
 import FormButton from "../../../../../components/Form/components/FormButton";
@@ -22,6 +22,7 @@ const ForgotPasswordFields: FC = () => {
       />
       <FormButton
         label="reset password"
+        icon={ <PasswordIcon /> }
       />
     </>
   );

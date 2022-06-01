@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { MdLogin } from 'react-icons/md';
 
 import * as constants from '../../../../../constants';
 
+import LoginIcon from "../../../../../components/Icons/LoginIcon";
 import StyledLink from '../../../../../components/StyledLink';
 import FormTitle from '../../../../../components/Form/components/FormTitle';
 import FormField from "../../../../../components/Form/components/FormField";
@@ -34,7 +34,7 @@ const LoginFields: FC = () => {
       />
       <FormButton
         label="login"
-        icon={ <MdLogin /> }
+        icon={ <LoginIcon /> }
       />
     </>
   );
