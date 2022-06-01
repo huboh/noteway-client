@@ -21,7 +21,7 @@ const Auth: FC = () => {
   ]);
 
   return (
-    <main className='view auth-view signup-view'>
+    <main className='view auth-view'>
       <Header.Auth />
 
       <section className='child-wrapper'>

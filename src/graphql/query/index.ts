@@ -4,15 +4,28 @@ import { gql } from '@apollo/client';
 export const ME = gql`
   query Me {
     me {
-      id
       userId
       name
       email
       username
       createdAt
+      avatarUrl
       updatedAt
       isDeactivated
       isEmailVerified
+      preferences {
+        theme
+        sortNoteBy
+      }
+      notes {
+        totalNodes
+        pageInfo {
+          total
+        }
+      }
+      archivedNotes {
+        totalNodes
+      }
     }
   }
 `;

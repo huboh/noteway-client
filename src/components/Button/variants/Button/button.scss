@@ -1,6 +1,7 @@
 .button {
   border: none;
   outline: none;
+  user-select: none;
   height: 2.4rem;
   border-radius: var(--border-radius);
 
@@ -14,6 +15,62 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.transparent {
+    color: var(--primary-color);
+    background-color: transparent;
+
+    .icon-wrapper {
+      & > * {
+        fill: var(--primary-color);
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-color-light);
+    }
+
+    &:focus {
+      background-color: var(--primary-color-light);
+    }
+
+    &:disabled {
+      cursor: wait;
+      background-color: var(--primary-color-light);
+
+      &:hover {
+        background-color: var(--primary-color-light);
+      }
+    }
+  }
+
+  &.see-through {
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
+
+    .icon-wrapper {
+      & > * {
+        fill: var(--primary-color);
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+
+    &:focus {
+      background-color: var(--primary-color-hover);
+    }
+
+    &:disabled {
+      cursor: wait;
+      background-color: var(--primary-color-light);
+
+      &:hover {
+        background-color: var(--primary-color-light);
+      }
+    }
+  }
 
   .text-wrapper {
     margin: 0;
@@ -69,6 +126,10 @@
 
   &:hover {
     transform: translateY(-2px);
+    background-color: var(--primary-color-dark);
+  }
+
+  &:focus {
     background-color: var(--primary-color-dark);
   }
 

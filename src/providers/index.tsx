@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
-import UserProvider from './UserProvider';
+import AuthProvider from './AuthProvider';
 import ApolloProvider from './ApolloProvider';
 import NetworkInfoProvider from './NetworkInfoProvider';
 import BrowserRouterProvider from './BrowserRouterProvider';
+import ToastNotificationProvider from './ToastNotificationProvider';
 
 const combineProviders = (providers: FC[]) => providers.reduce(
   (Providers, Provider) => function AppProviders({ children }) {
@@ -20,8 +21,9 @@ const combineProviders = (providers: FC[]) => providers.reduce(
 const AppProviders = combineProviders([
   ApolloProvider,
   BrowserRouterProvider,
-  UserProvider,
+  AuthProvider,
   NetworkInfoProvider,
+  ToastNotificationProvider,
 ]);
 
 export {

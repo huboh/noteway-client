@@ -2,8 +2,11 @@ import "./button.scss";
 import { BiLoaderCircle } from 'react-icons/bi';
 import { FC, useState, ReactNode, ButtonHTMLAttributes } from "react";
 
+export type ButtonStyle = 'opaque' | 'transparent' | 'see-through';
+
 export interface ButtonProps {
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
+  style?: ButtonStyle;
   label?: string;
   icon?: ReactNode;
   disabled?: boolean;
@@ -20,7 +23,7 @@ const Button: FC<ButtonProps> = (props) => {
   isDisabled = props.onClick ? isDisabled : props.disabled;
 
   const type = props.type || 'button';
-  const className = props.className || '';
+  const className = `${props.style || ''} ${props.className || ''}`.trim();
 
   // handler
   const onClickHandler = async () => {

@@ -1,16 +1,20 @@
 import './button-link.scss';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
+import { ButtonStyle } from '../Button';
 
 export interface ButtonLinkProps extends LinkProps {
   text: string;
+  icon?: ReactNode;
+  linkStyle?: ButtonStyle;
 }
 
-const ButtonLink: FC<ButtonLinkProps> = ({ text, to, children, ...rest }) => (
-  <Link { ...rest } className='button button-link' to={ to } >
+const ButtonLink: FC<ButtonLinkProps> = ({ text, to, icon, linkStyle, children, ...rest }) => (
+  <Link { ...rest } className={ `button button-link ${linkStyle || ''}`.trim() } to={ to } >
     <span className='text-wrapper'>
       { text || children }
     </span>
+    { icon && <span className="icon-wrapper">{ icon }</span> }
   </Link>
 );
 
