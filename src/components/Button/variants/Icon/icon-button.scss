@@ -1,0 +1,33 @@
+.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  outline: none;
+  padding: 0.4em;
+  user-select: none;
+  transition: transform 200ms ease;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+
+  svg {
+    display: block;
+    font-size: 1.3rem;
+    stroke: var(--text-color);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: var(--background-color-dark-hover);
+  }
+
+  &:focus {
+    background-color: var(--background-color-dark-hover);
+  }
+
+  &:active {
+    transform: translateY(2px);
+    background-color: var(--background-color-dark-active);
+  }
+}
