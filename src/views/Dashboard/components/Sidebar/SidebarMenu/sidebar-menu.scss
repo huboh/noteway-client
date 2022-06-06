@@ -1,0 +1,9 @@
+.sidebar-menu {
+  width: 100%;
+
+  &:not(:last-of-type) {
+    padding-bottom: 0.6em;
+    margin-bottom: 0.6em;
+    border-bottom: var(--border);
+  }
+}
