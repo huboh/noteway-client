@@ -4,7 +4,7 @@ import useAuth from '../../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 import * as utils from '../../utils';
-import * as constants from '../../../../constants';
+import * as routes from '../../../../constants/routes';
 import * as formTypes from '../../../../components/Form/types';
 
 import SignupFields from './SignupFields';
@@ -27,7 +27,7 @@ const SignupForm: FC = () => {
     return auth.signup?.({
       credentials: { email, password },
       onError: (error) => console.log(error.message),
-      onSuccess: () => navigate(constants.HOME_ROUTE, { replace: true }),
+      onSuccess: () => navigate(routes.HOME, { replace: true }),
     });
   };
 
@@ -36,7 +36,7 @@ const SignupForm: FC = () => {
       fields={ fields }
       onSubmit={ onSubmit }
       includeLogo={ false }
-      promptLink={ constants.LOGIN_ROUTE }
+      promptLink={ routes.LOGIN }
       promptLinkText="login"
       promptText="already have an account?"
     >

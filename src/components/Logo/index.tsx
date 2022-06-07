@@ -3,7 +3,7 @@ import { FC } from "react";
 import { Link } from 'react-router-dom';
 
 import logo from "./logo-Itoma.png";
-import * as constants from "../../constants";
+import * as routes from "../../constants/routes";
 
 export interface LogoProps {
   className?: string;
@@ -12,7 +12,7 @@ export interface LogoProps {
 
 
 const Logo: FC<LogoProps> = ({ redirectLink, className }) => (
-  <Link to={ redirectLink || constants.HOME_ROUTE } className={ `logo-wrapper ${className || ''}`.trim() }>
+  <Link to={ redirectLink || routes.HOME } className={ `logo-wrapper ${className || ''}`.trim() }>
     <img className="logo" alt="logo" src={ logo } />
   </Link>
 );

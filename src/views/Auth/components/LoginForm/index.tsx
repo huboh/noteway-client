@@ -4,7 +4,7 @@ import useAuth from '../../../../hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import * as utils from '../../utils';
-import * as constants from '../../../../constants';
+import * as routes from '../../../../constants/routes';
 import * as formTypes from '../../../../components/Form/types';
 
 import LoginFields from './LoginFields';
@@ -16,7 +16,7 @@ const LoginForm: FC = () => {
   const navigate = useNavigate();
   const location: any = useLocation();
 
-  const from = location.state?.from?.pathname || constants.HOME_ROUTE;
+  const from = location.state?.from?.pathname || routes.HOME;
 
   const fields: formTypes.FormField[] = [
     { name: "email", value: "", validator: utils.validateEmail },
@@ -38,7 +38,7 @@ const LoginForm: FC = () => {
       fields={ fields }
       onSubmit={ onSubmit }
       includeLogo={ false }
-      promptLink={ constants.SIGNUP_ROUTE }
+      promptLink={ routes.SIGNUP }
       promptLinkText="signup"
       promptText="Don't have an account yet?"
     >

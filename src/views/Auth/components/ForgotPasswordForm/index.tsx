@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import * as utils from '../../utils';
-import * as constants from '../../../../constants';
+import * as routes from '../../../../constants/routes';
 import * as formTypes from '../../../../components/Form/types';
 
 import ForgotPasswordFields from './ForgotPasswordFields';
@@ -23,7 +23,7 @@ const LoginForm: FC = () => {
       fields={ fields }
       onSubmit={ onSubmit }
       includeLogo={ false }
-      promptLink={ constants.LOGIN_ROUTE }
+      promptLink={ routes.LOGIN }
       promptLinkText="login"
       promptText="Go back to"
     >

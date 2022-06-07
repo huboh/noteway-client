@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import * as constants from '../../../../../constants';
+import * as routes from '../../../../../constants/routes';
 
 import LoginIcon from "../../../../../components/Icons/LoginIcon";
 import StyledLink from '../../../../../components/StyledLink';
@@ -30,7 +30,7 @@ const LoginFields: FC = () => {
         id="login-password"
         label='password'
         placeholder='password'
-        labelLink={ <StyledLink text='forgot password?' to={ constants.FORGOT_PASSWORD_ROUTE } /> }
+        labelLink={ <StyledLink text='forgot password?' to={ routes.FORGOT_PASSWORD } /> }
       />
       <FormButton
         label="login"

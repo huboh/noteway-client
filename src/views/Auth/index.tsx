@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import * as constants from '../../constants';
+import * as routes from '../../constants/routes';
 
 import './auth.scss';
 import Header from '../../components/Header';
@@ -15,19 +15,21 @@ import ForgotPasswordForm from './components/ForgotPasswordForm';
 const Auth: FC = () => {
   const path = useLocation().pathname;
   const viewMap = new Map([
-    [constants.LOGIN_ROUTE, <LoginForm />],
-    [constants.SIGNUP_ROUTE, <SignupForm />],
-    [constants.FORGOT_PASSWORD_ROUTE, <ForgotPasswordForm />],
+    [routes.LOGIN, <LoginForm />],
+    [routes.SIGNUP, <SignupForm />],
+    [routes.FORGOT_PASSWORD, <ForgotPasswordForm />],
   ]);
 
   return (
-    <main className='view auth-view'>
+    <>
       <Header.Auth />
+      <main className='view auth-view'>
 
-      <section className='child-wrapper'>
-        { viewMap.get(path) }
-      </section>
-    </main>
+        <section className='child-wrapper'>
+          { viewMap.get(path) }
+        </section>
+      </main>
+    </>
   );
 };
 
