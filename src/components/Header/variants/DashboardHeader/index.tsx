@@ -1,17 +1,18 @@
 import "../../header.scss";
-import { FC, ReactNode } from "react";
+import "./dashboard-header.scss";
+import { FC } from "react";
 
-import Logo from "../../../Logo";
+// components
+import SearchBar from "../../components/SearchBar";
+import DashboardNavbar from "../../components/DashboardNavbar";
 
-export interface DashboardHeaderProps {
-  HeaderNavigation?: ReactNode;
-}
+export interface DashboardHeaderProps { }
 
 
 const DashboardHeader: FC<DashboardHeaderProps> = (props) => (
-  <header className="header">
-    <Logo />
-    { props.HeaderNavigation }
+  <header className="header dashboard-header">
+    <SearchBar />
+    <DashboardNavbar />
   </header>
 );
 
