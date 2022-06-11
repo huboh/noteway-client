@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import AuthProvider from './AuthProvider';
 import ApolloProvider from './ApolloProvider';
+import PreferencesProvider from './PreferencesProvider';
 import NetworkInfoProvider from './NetworkInfoProvider';
 import BrowserRouterProvider from './BrowserRouterProvider';
 import ToastNotificationProvider from './ToastNotificationProvider';
@@ -23,6 +24,7 @@ const AppProviders = combineProviders([
   BrowserRouterProvider,
   AuthProvider,
   NetworkInfoProvider,
+  PreferencesProvider,
   ToastNotificationProvider,
 ]);
 
