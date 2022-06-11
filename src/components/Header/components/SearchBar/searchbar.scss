@@ -7,8 +7,9 @@
 
   overflow: hidden;
   border: var(--border);
+  border-color: transparent;
   border-radius: var(--border-radius);
-  background-color: var(--background-color-grey-light);
+  background-color: var(--background-color-dark-active);
 
   .searchbar-form {
     width: 100%;
