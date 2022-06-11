@@ -1,0 +1,47 @@
+.theme-switcher-wrapper {
+  width: 7rem;
+  padding: 0.26em;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-dark-active);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .theme-switcher-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    outline: none;
+    padding: 0.4em;
+    user-select: none;
+    background-color: transparent;
+    transition: transform 200ms ease;
+    border-radius: var(--border-radius);
+
+    &:not(:last-of-type) {
+      margin-inline-end: 0.2em;
+    }
+
+    svg {
+      width: 1.5rem;
+      stroke: var(--text-color);
+    }
+
+    &.active {
+      background-color: var(--background-color);
+
+      &:focus,
+      &:hover {
+        background-color: var(--background-color);
+      }
+    }
+
+    &:focus,
+    &:hover {
+      background-color: var(--background-color-dark-hover);
+    }
+  }
+}
