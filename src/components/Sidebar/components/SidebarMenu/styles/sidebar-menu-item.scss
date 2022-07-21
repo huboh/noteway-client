@@ -1,0 +1,65 @@
+.sidebar-menu-item {
+  --padding: 0.6em;
+  --text-color: var(--text-color);
+  --background-color: transparent;
+
+  overflow: hidden;
+  border-radius: var(--border-radius);
+
+  &.active {
+    --text-color: var(--primary-color);
+    --background-color: var(--primary-color-light);
+  }
+
+  &:not(:last-of-type) {
+    margin-block-end: 0.4em;
+  }
+
+  &:hover,
+  &:focus-within {
+    --text-color: var(--text-color);
+    --background-color: var(--hover-color);
+
+    &.active {
+      --text-color: var(--primary-color);
+      --background-color: var(--primary-color-light);
+    }
+  }
+
+  .menu-link {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 2.5rem;
+    user-select: none;
+
+    font-size: 1rem;
+    font-weight: 600;
+    padding: var(--padding);
+    text-decoration: none;
+    text-transform: capitalize;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.2s, transform 0.2s;
+
+    .icon-wrapper {
+      width: 1.2rem;
+      height: 1.2rem;
+      min-width: 1.2rem;
+      margin-inline-end: var(--padding);
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      svg {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

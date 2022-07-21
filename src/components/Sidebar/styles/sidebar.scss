@@ -6,5 +6,6 @@
 
   min-height: 100vh;
   padding: 0 var(--sidebar-padding);
-  background-color: var(--background-color-grey-hover);
+  // background-color: var(--background-color-secondary);
+  border-inline-end: 1px solid var(--border-color);
 }

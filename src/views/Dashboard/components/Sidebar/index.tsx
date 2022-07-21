@@ -1,46 +1,47 @@
-import "./sidebar.scss";
+import "./styles/dashboard-sidebar.scss";
+
+import { FC } from 'react';
 import { useLocation } from "react-router-dom";
-import { FC, useState, createContext } from 'react';
+import * as routes from '../../../../constants/routes';
+
+// icons
+import { MdSettings } from 'react-icons/md';
+import { BiArchive, BiTrash } from 'react-icons/bi';
+import { TbNotes, TbTags, TbMenu2 } from 'react-icons/tb';
 
 // components
-import SidebarHeader from "./SidebarHeader";
-import PrimarySidebarMenu from "./PrimarySidebarMenu";
-import SecondarySidebarMenu from "./SecondarySidebarMenu";
+import Logo from "../../../../components/Logo";
+import Button from "../../../../components/Button";
+import Sidebar from "../../../../components/Sidebar";
+import SidebarMenu from "../../../../components/Sidebar/components/SidebarMenu";
+import SidebarHeader from "../../../../components/Sidebar/components/SidebarHeader";
 
-export interface SidebarProps { }
+const accountMenu = [
+  { text: "settings", icon: <MdSettings />, to: routes.SETTINGS, },
+];
 
-export interface SidebarState {
-  activeTab: null | string;
-  setActiveTab?: (tabId: string) => void;
-}
+const mainMenu = [
+  { text: "notes", icon: <TbNotes />, to: routes.NOTES, },
+  { text: "tags", icon: <TbTags />, to: routes.TAGS, },
+  { text: "archived notes", icon: <BiArchive />, to: routes.ARCHIVED_NOTES, },
+  { text: "trash", icon: <BiTrash />, to: routes.TRASH, },
+];
 
-const getDefaultState = (tabId?: string | null) => ({
-  activeTab: tabId || null
-});
-
-const SidebarContext = createContext<SidebarState>(getDefaultState());
-
-
-const Sidebar: FC<SidebarProps> = () => {
+const DashboardSidebar: FC = () => {
   const activeTab = useLocation().pathname.split("/")[1] || "notes";
-  const [sidebarState, setSidebarState] = useState<SidebarState>(getDefaultState(activeTab));
-
-  // callbacks
-  const setActiveTab = (tabId: string) => setSidebarState({ activeTab: tabId });
 
   return (
-    <SidebarContext.Provider value={ { ...sidebarState, setActiveTab } }>
-      <aside className="sidebar">
-        <SidebarHeader />
-        <PrimarySidebarMenu />
-        <SecondarySidebarMenu />
-      </aside>
-    </SidebarContext.Provider>
+    <Sidebar className={ "dashboard-sidebar" } activeTab={ activeTab }>
+      <SidebarHeader className="header">
+        <Logo className="logo" />
+        <Button.Icon icon={ <TbMenu2 /> } onClick={ () => { } } />
+      </SidebarHeader>
+      <SidebarMenu title={ "menu" } menuItems={ mainMenu } />
+      <SidebarMenu title={ "account" } menuItems={ accountMenu } />
+    </Sidebar>
   );
 };
 
-
 export {
-  Sidebar as default,
-  SidebarContext
+  DashboardSidebar as default
 };
