@@ -1,22 +1,29 @@
-import './button-link.scss';
-import { FC, ReactNode } from 'react';
+import '../../styles/button-link.scss';
+
+import { FC } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
-import { ButtonStyle } from '../Button';
 
-export interface ButtonLinkProps extends LinkProps {
-  text: string;
-  icon?: ReactNode;
-  linkStyle?: ButtonStyle;
-}
+import { ButtonProps } from "../Button";
+import { Spinner } from "../../../../constants";
+import { joinClassStrings } from "../../../../utils";
 
-const ButtonLink: FC<ButtonLinkProps> = ({ text, to, icon, linkStyle, children, ...rest }) => (
-  <Link { ...rest } className={ `button button-link ${linkStyle || ''}`.trim() } to={ to } >
-    <span className='text-wrapper'>
-      { text || children }
-    </span>
-    { icon && <span className="icon-wrapper">{ icon }</span> }
-  </Link>
-);
+// components
+import Text from "../../components/Text";
+import Icon from "../../components/Icon";
+
+export interface ButtonLinkProps extends LinkProps, Omit<ButtonProps, "type" | "onClick"> { }
+
+const ButtonLink: FC<ButtonLinkProps> = ({ to, ...props }) => {
+  const busyClass = props.isBusy ? "busy" : "";
+  const classString = joinClassStrings("button button-link", busyClass, props.className);
+
+  return (
+    <Link { ...props } className={ classString } to={ to } >
+      <Icon icon={ props.isBusy ? <Spinner className="spinner" /> : props.icon } />
+      <Text text={ props.text } />
+    </Link>
+  );
+};
 
 export {
   ButtonLink as default

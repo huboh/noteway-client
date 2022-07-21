@@ -8,7 +8,6 @@ export interface FormButtonProps extends ButtonProps {
   isSubmitting?: boolean;
 }
 
-
 const FormButton: FC<FormButtonProps> = (props) => {
   const isSubmitting = useForm().isSubmitting || props.isSubmitting;
 
@@ -16,12 +15,11 @@ const FormButton: FC<FormButtonProps> = (props) => {
     <Button
       { ...props }
       className='form-button'
+      isBusy={ isSubmitting }
       disabled={ isSubmitting }
-      showSpinner={ isSubmitting }
       type={ props.type || 'submit' }
     />
   );
 };
-
 
 export default FormButton;

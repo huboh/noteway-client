@@ -1,4 +1,5 @@
-import "./icon-button.scss";
+import "../../styles/icon-button.scss";
+
 import { FC, ReactNode, ButtonHTMLAttributes } from "react";
 
 export type ButtonStyle = 'opaque' | 'transparent' | 'see-through';
