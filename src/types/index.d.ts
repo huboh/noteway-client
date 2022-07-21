@@ -1,43 +1,62 @@
+export type Theme = 'dark' | 'light' | 'system';
+
+export type NoteSorting = 'updatedAt' | 'createdAt' | 'title';
+
 export interface MongoDBObject {
   id: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export interface User extends MongoDBObject {
-  name?: string;
-  email: string;
-  userId: string;
-  username: string;
-  password?: string;
-  avatarUrl?: string;
-  isDeactivated: boolean;
-  isEmailVerified: boolean;
-  archivedNotes: Note[];
-  notes: Note[];
-  preferences: {
-    theme: ThemePreference;
-    sortNoteBy: NoteSorting;
+export interface Preferences {
+  theme: Theme;
+  sortNoteBy: NoteSorting;
+}
+export interface Connection<T> {
+  nodes: T[];
+  totalNodes: number;
+  pageInfo: {
+    limit: number,
+    total: number,
+    nextPage: number,
+    currentPage: number,
+    previousPage: number,
+    hasNextPage: boolean,
+    hasPreviousPage: boolean,
   };
 }
 
+export interface User extends MongoDBObject {
+  archivedNotes: Connection<Note>;
+  notes: Connection<Note>;
+  preferences: Preferences;
+  isDeactivated: boolean;
+  isEmailVerified: boolean;
+  avatarUrl?: string;
+  password?: string;
+  username: string;
+  userId: string;
+  email: string;
+  name?: string;
+}
+
 export interface Note extends MongoDBObject {
-  tag: Tag;
-  author: User;
-  noteId: string;
-  authorId: string;
-  title: string;
-  content: string;
+  collaborators: Collaborator[];
+  attachments: NoteAttachment[];
+  activities: NoteActivity[];
+  visibility: NoteVisibility;
+  isAddedToTrash: boolean;
+  isArchived: boolean;
+  isStarred: boolean;
   isPinned: boolean;
   isPrivate: boolean;
-  isStarred: boolean;
-  isArchived: boolean;
-  isAddedToTrash: boolean;
-  visibility: NoteVisibility;
-  activities: NoteActivity[];
-  attachments: NoteAttachment[];
-  collaborators: Collaborator[];
   starredBy: User[];
+  content: string;
+  authorId: string;
+  noteId: string;
+  title: string;
+  author: User;
+  tag: Tag;
 }
 
 export interface Tag extends MongoDBObject {
