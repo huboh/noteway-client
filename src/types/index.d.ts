@@ -83,6 +83,7 @@ export interface Collaborator extends MongoDBObject {
   noteId: string;
   userId: string;
   collaboratorId: string;
-  createdBy: User;
   role: CollaboratorRole;
+  createdBy: User;
+  user: User;
 }
