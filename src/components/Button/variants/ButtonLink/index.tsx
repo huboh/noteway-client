@@ -1,6 +1,6 @@
 import '../../styles/button-link.scss';
 
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 
 import { ButtonProps } from "../Button";
@@ -15,10 +15,10 @@ export interface ButtonLinkProps extends LinkProps, Omit<ButtonProps, "type" | "
 
 const ButtonLink: FC<ButtonLinkProps> = ({ to, ...props }) => {
   const busyClass = props.isBusy ? "busy" : "";
-  const classString = joinClassStrings("button button-link", busyClass, props.className);
+  const classString = useMemo(() => joinClassStrings("button button-link", busyClass, props.className), [busyClass, props.className]);
 
   return (
-    <Link { ...props } className={ classString } to={ to } >
+    <Link { ...props } className={ classString } to={ to } title={ props.title }>
       <Icon icon={ props.isBusy ? <Spinner className="spinner" /> : props.icon } />
       <Text text={ props.text } />
     </Link>

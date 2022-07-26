@@ -1,30 +1,23 @@
 import "../../styles/icon-button.scss";
 
-import { FC, ReactNode, ButtonHTMLAttributes } from "react";
+import { ButtonProps } from "../Button";
+import { FC, useMemo, ReactNode } from "react";
+import { joinClassStrings } from "../../../../utils";
 
-export type ButtonStyle = 'opaque' | 'transparent' | 'see-through';
-
-export interface IconProps {
-  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
-  style?: ButtonStyle;
-  label?: string;
+export interface IconProps extends Omit<ButtonProps, "icon" | "text" | "isBusy"> {
   icon?: ReactNode;
-  className?: string;
-  onClick?: () => any;
 }
-
 
 const Icon: FC<IconProps> = (props) => {
   const type = props.type || 'button';
-  const className = `${props.style || 'see-through'} ${props.className || ''}`.trim();
+  const classString = useMemo(() => joinClassStrings("button-icon", props.className), [props.className]);
 
   return (
-    <button className={ `button-icon ${className}`.trim() } onClick={ props.onClick } type={ type }>
+    <button className={ classString } onClick={ props.onClick } title={ props.title } type={ type }>
       { props.icon }
     </button>
   );
 };
-
 
 export {
   Icon as default
