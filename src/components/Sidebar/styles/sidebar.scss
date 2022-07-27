@@ -1,8 +1,18 @@
 .sidebar {
   --sidebar-padding: 0.6em;
 
-  height: 100%;
+  top: 0;
+  position: sticky;
+
+  z-index: 10;
+  height: 100vh;
   width: var(--sidebar-width);
   padding: 0 var(--sidebar-padding);
+  background-color: var(--background-color);
   border-inline-end: 1px solid var(--border-color);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
 }
