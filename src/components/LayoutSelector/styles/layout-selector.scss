@@ -1,0 +1,13 @@
+.layout-selector {
+  width: max-content;
+  list-style-type: none;
+
+  gap: 0.4em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .layout-btn.selected svg {
+    stroke: var(--text-color);
+  }
+}
