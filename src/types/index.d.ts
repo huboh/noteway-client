@@ -1,3 +1,5 @@
+export type Layout = "list" | "grid";
+
 export type Theme = 'dark' | 'light' | 'system';
 
 export type NoteSorting = 'updatedAt' | 'createdAt' | 'title';
