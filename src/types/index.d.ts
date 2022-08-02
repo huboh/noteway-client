@@ -4,6 +4,8 @@ export type Theme = 'dark' | 'light' | 'system';
 
 export type NoteSorting = 'updatedAt' | 'createdAt' | 'title';
 
+export type CollaboratorRole = 'editor' | 'viewer' | 'commenter';
+
 export interface MongoDBObject {
   id: string;
   createdAt: string;
