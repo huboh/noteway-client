@@ -1,0 +1,17 @@
+.note-activities {
+  gap: 0.8rem;
+  width: 100%;
+  height: max-content;
+  list-style-type: none;
+
+  li {
+    width: 100%;
+    overflow: hidden;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0.5em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid var(--border-color);
+    }
+  }
+}
