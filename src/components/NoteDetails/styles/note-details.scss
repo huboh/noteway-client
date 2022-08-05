@@ -1,0 +1,30 @@
+.note-details {
+  width: 100%;
+  height: max-content;
+  list-style-type: disc;
+
+  .detail {
+    width: 100%;
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-color);
+
+    .title {
+      min-width: 25%;
+      user-select: none;
+      display: inline-block;
+      color: var(--text-color-secondary);
+      text-transform: capitalize;
+    }
+
+    .value {
+      margin-left: 0.3em;
+      color: var(--text-color-secondary);
+      text-transform: capitalize;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 1em;
+    }
+  }
+}
