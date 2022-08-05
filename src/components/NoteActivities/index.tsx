@@ -8,13 +8,16 @@ import useClassStrings from "../../hooks/useClassStrings";
 import useNoteActivities from "../../hooks/useNoteActivities";
 
 // components
-import NoteActivity from "./NoteActivity";
+import NoteActivity from "./components/NoteActivity";
+import NoteActivitiesSkeleton from "./components/NoteActivitiesSkeleton";
 
 export interface NotesProps {
   noteId: string;
   noteTitle: string;
   baseLink?: string;
   className?: string;
+
+  skeletonCount?: number;
 }
 
 const NoteActivities: FC<NotesProps> = (props) => {
@@ -23,12 +26,14 @@ const NoteActivities: FC<NotesProps> = (props) => {
   const classString = useClassStrings("note-activities", props.className);
   const profileLink = useCallback((activity: NoteActivity_) => baseLink + activity.initiator.username, [baseLink]);
 
+  if (activities.loading) return (
+    <NoteActivitiesSkeleton className={ props.className } skeletonCount={ props.skeletonCount || 3 } />
+  );
+
   return (
     <ul className={ classString }>
       { activities.data?.note?.activities?.map?.((activity) => (
-        <li key={ activity.activityId }>
-          <NoteActivity profileLink={ profileLink } noteTitle={ props.noteTitle } noteActivity={ activity } />
-        </li>
+        <li key={ activity.activityId } children={ <NoteActivity profileLink={ profileLink } noteTitle={ props.noteTitle } noteActivity={ activity } /> } />
       )) }
     </ul >
   );

@@ -1,13 +1,13 @@
-import "../styles/note-activity.scss";
+import "../../styles/note-activity.scss";
 
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { NoteActivity as Activity } from "../../../types";
+import { NoteActivity as Activity } from "../../../../types";
 
 // hooks
-import useAuth from "../../../hooks/useAuth";
-import useElapsedTime from "../../../hooks/useElapsedTime";
-import useClassStrings from "../../../hooks/useClassStrings";
+import useAuth from "../../../../hooks/useAuth";
+import useElapsedTime from "../../../../hooks/useElapsedTime";
+import useClassStrings from "../../../../hooks/useClassStrings";
 
 export interface NoteActivityProps {
   noteTitle: string;
