@@ -1,11 +1,9 @@
 .sidebar {
   --sidebar-padding: 0.6em;
 
-  top: 0;
-  position: sticky;
-
-  z-index: 10;
+  z-index: 1;
   height: 100vh;
+  overflow: auto;
   width: var(--sidebar-width);
   padding: 0 var(--sidebar-padding);
   background-color: var(--background-color);
@@ -15,4 +13,16 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-flow: column nowrap;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--text-color-secondary);
+
+    &:hover {
+      background-color: var(--primary-color);
+    }
+  }
 }

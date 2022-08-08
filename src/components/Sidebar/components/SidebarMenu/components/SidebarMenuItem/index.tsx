@@ -27,8 +27,8 @@ const SidebarMenuItem: FC<SidebarMenuItemProps> = (props) => {
   return (
     <li className={ classString } onClick={ onCLickHandler }>
       <Link className="menu-link" to={ props.to } >
-        <span className="icon-wrapper">{ props.icon }</span>
-        <span className='text-wrapper'>{ props.text }</span>
+        <span className="icon">{ props.icon }</span>
+        <span className='text'>{ props.text }</span>
       </Link>
     </li>
   );
