@@ -7,7 +7,6 @@ interface UseNoteProps {
 }
 
 const useNote = (props: UseNoteProps) => useQuery<{ note: Note; }>(NOTE, {
-  fetchPolicy: "cache-and-network",
   variables: { noteId: props.noteId }
 });
 
