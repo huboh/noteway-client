@@ -12,28 +12,30 @@ import NoteActivity from "./components/NoteActivity";
 import NoteActivitiesSkeleton from "./components/NoteActivitiesSkeleton";
 
 export interface NotesProps {
-  noteId: string;
-  noteTitle: string;
+  noteId?: string;
+  noteTitle?: string;
   baseLink?: string;
   className?: string;
-
   skeletonCount?: number;
 }
 
 const NoteActivities: FC<NotesProps> = (props) => {
   const baseLink = props.baseLink || "";
-  const activities = useNoteActivities({ noteId: props.noteId });
+  const noteTitle = props.noteTitle || "";
   const classString = useClassStrings("note-activities", props.className);
+  const activitiesQuery = useNoteActivities({ noteId: props.noteId || "" });
   const profileLink = useCallback((activity: NoteActivity_) => baseLink + activity.initiator.username, [baseLink]);
 
-  if (activities.loading) return (
-    <NoteActivitiesSkeleton className={ props.className } skeletonCount={ props.skeletonCount || 3 } />
-  );
+  const activities = activitiesQuery.data?.note?.activities;
+
+  if (activitiesQuery.loading) {
+    return <NoteActivitiesSkeleton className={ props.className } skeletonCount={ props.skeletonCount || 3 } />;
+  };
 
   return (
     <ul className={ classString }>
-      { activities.data?.note?.activities?.map?.((activity) => (
-        <li key={ activity.activityId } children={ <NoteActivity profileLink={ profileLink } noteTitle={ props.noteTitle } noteActivity={ activity } /> } />
+      { activities?.map?.((noteActivity) => (
+        <li key={ noteActivity.activityId } children={ <NoteActivity  { ...{ profileLink, noteTitle, noteActivity } } /> } />
       )) }
     </ul >
   );
