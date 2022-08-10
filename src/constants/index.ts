@@ -16,6 +16,8 @@ export const LayoutIconMap: Record<Layout, FC> = {
   grid: TbLayoutGrid,
 };
 
+export const DefaultLayout: Layout = "grid";
+
 // note
 export const DefaultNoteTitleText = "-- no title --";
 export const DefaultNoteContextText = "-- no content --";
