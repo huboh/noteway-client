@@ -1,24 +1,12 @@
-import { createContext, FC, useState } from 'react';
-import { getNetworkStatus, navigatorConnection } from './utils';
-import useEventListener from '../../hooks/useEventListener';
-
-
-const NetworkInformationContext = createContext(getNetworkStatus());
+import { FC, useState } from 'react';
+import { useEventListener } from '../../hooks/useEventListener';
+import { getNetworkStatus, navigatorConnection, NetworkInformationContext } from './utils';
 
 const NetworkInfoProvider: FC = ({ children }) => {
   const [networkStatus, setNetWorkStatus] = useState(getNetworkStatus);
 
-  useEventListener({
-    target: window,
-    eventType: ['online', 'offline'],
-    eventHandler: () => setNetWorkStatus(getNetworkStatus)
-  });
-
-  useEventListener({
-    target: navigatorConnection,
-    eventType: 'change',
-    eventHandler: () => setNetWorkStatus(getNetworkStatus)
-  });
+  useEventListener({ target: window, eventType: ['online', 'offline'], eventHandler: () => setNetWorkStatus(getNetworkStatus) });
+  useEventListener({ target: navigatorConnection, eventType: ['change'], eventHandler: () => setNetWorkStatus(getNetworkStatus) });
 
   return (
     <NetworkInformationContext.Provider value={ networkStatus }>
@@ -27,5 +15,6 @@ const NetworkInfoProvider: FC = ({ children }) => {
   );
 };
 
-
-export default NetworkInfoProvider;
+export {
+  NetworkInfoProvider as default
+};
