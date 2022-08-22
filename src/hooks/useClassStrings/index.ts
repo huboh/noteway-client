@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo } from "react";
 import { joinClassStrings } from "../../utils";
 
-const useUserRole = (...classNames: (string | undefined)[]) => useMemo(() => joinClassStrings(...classNames), [...classNames]);
+export const useClassStrings = (...classNames: Parameters<typeof joinClassStrings>) => (
+  useMemo(() => joinClassStrings(...classNames), [...classNames])
+);
 
 export {
-  useUserRole as default
+  useClassStrings as default
 };
