@@ -1,0 +1,13 @@
+.theme-switcher-wrapper {
+  --padding: 0.35em;
+
+  width: 7rem;
+  height: 2.5rem;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
