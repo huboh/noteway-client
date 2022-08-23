@@ -1,43 +1,45 @@
 import "./styles/dashboard-sidebar.scss";
 
 import { FC } from 'react';
+import { TbMenu2 } from 'react-icons/tb';
 import { useLocation } from "react-router-dom";
-import * as routes from '../../../../constants/routes';
+import { mainMenu, accountMenu, defaultTab } from './utils';
 
-// icons
-import { MdSettings } from 'react-icons/md';
-import { BiArchive, BiTrash } from 'react-icons/bi';
-import { TbNotes, TbTags, TbMenu2 } from 'react-icons/tb';
+// hooks
+import useAuth from "../../../../hooks/useAuth";
+import useClassStrings from "../../../../hooks/useClassStrings";
 
 // components
 import Logo from "../../../../components/Logo";
 import Button from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar";
+import ProfileCard from "../../../../components/ProfileCard";
 import SidebarMenu from "../../../../components/Sidebar/components/SidebarMenu";
 import SidebarHeader from "../../../../components/Sidebar/components/SidebarHeader";
+import SidebarFooter from "../../../../components/Sidebar/components/SidebarFooter";
 
-const accountMenu = [
-  { text: "settings", icon: <MdSettings />, to: routes.SETTINGS, },
-];
+export interface DashboardSidebarProps {
+  className?: string;
+}
 
-const mainMenu = [
-  { text: "notes", icon: <TbNotes />, to: routes.NOTES, },
-  { text: "tags", icon: <TbTags />, to: routes.TAGS, },
-  { text: "archived notes", icon: <BiArchive />, to: routes.ARCHIVED_NOTES, },
-  { text: "trash", icon: <BiTrash />, to: routes.TRASH, },
-];
-
-const DashboardSidebar: FC = () => {
-  const activeTab = useLocation().pathname.split("/")[1] || "notes";
+export const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
+  const auth = useAuth();
+  const activeTab = useLocation().pathname.split("/")[2] || defaultTab;
+  const classString = useClassStrings("dashboard-sidebar", props.className);
 
   return (
-    <Sidebar className={ "dashboard-sidebar" } activeTab={ activeTab }>
-      <SidebarHeader className="header">
+    <Sidebar className={ classString } activeTab={ activeTab }>
+      <SidebarHeader>
         <Logo className="logo" />
-        <Button.Icon icon={ <TbMenu2 /> } onClick={ () => { } } />
+        <Button.Icon icon={ <TbMenu2 /> } />
       </SidebarHeader>
+
       <SidebarMenu title={ "menu" } menuItems={ mainMenu } />
       <SidebarMenu title={ "account" } menuItems={ accountMenu } />
+
+      <SidebarFooter>
+        { auth.user && <ProfileCard user={ auth.user } /> }
+      </SidebarFooter>
     </Sidebar>
   );
 };
