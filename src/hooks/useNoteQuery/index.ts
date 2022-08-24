@@ -2,14 +2,14 @@ import { Note } from "../../types";
 import { NOTE } from "../../graphql/query";
 import { useQuery } from "@apollo/client";
 
-interface UseNoteProps {
+interface UseNoteQueryProps {
   noteId: string;
 }
 
-const useNote = (props: UseNoteProps) => useQuery<{ note: Note; }>(NOTE, {
+export const useNoteQuery = (props: UseNoteQueryProps) => useQuery<{ note: Note; }>(NOTE, {
   variables: { noteId: props.noteId }
 });
 
 export {
-  useNote as default
+  useNoteQuery as default
 };

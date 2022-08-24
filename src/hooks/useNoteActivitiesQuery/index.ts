@@ -8,11 +8,11 @@ export interface NoteActivitiesQueryResult {
   };
 }
 
-export interface UseNoteActivitiesProps {
+export interface UseNoteActivitiesQueryProps {
   noteId: string;
 }
 
-const useNoteActivities = (props: UseNoteActivitiesProps) => useQuery<NoteActivitiesQueryResult>(NOTE_ACTIVITIES, {
+const useNoteActivities = (props: UseNoteActivitiesQueryProps) => useQuery<NoteActivitiesQueryResult>(NOTE_ACTIVITIES, {
   variables: { noteId: props.noteId },
 });
 
