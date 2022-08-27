@@ -6,9 +6,9 @@ import { FC } from "react";
 import useAuth from '../../../../hooks/useAuth';
 import useNotes from '../../../../hooks/useNotes';
 import usePageTitle from './hooks/usePageTitle';
-import useDashboard from "../../hooks/useDashboard";
 import useClassStrings from '../../../../hooks/useClassStrings';
 import useDocumentTitle from "../../../../hooks/useDocumentTitle";
+import useDashboardContext from "../../hooks/useDashboardContext";
 
 // components
 import Header from "./components/Header";
@@ -18,7 +18,7 @@ import UserNotes from "../../../../components/Notes";
 
 export const Notes: FC = () => {
   const auth = useAuth();
-  const home = useDashboard();
+  const home = useDashboardContext();
   const query = useNotes({ authorId: auth.user?.userId! });
   const pageTitle = usePageTitle(query.data?.notes?.totalNodes);
   const classString = useClassStrings("notes-view", query.loading ? "loading" : "");

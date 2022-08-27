@@ -1,7 +1,15 @@
-import { useContext } from "react";
-import { DashboardContext } from "../../utils";
+import { useMemo, useState } from "react";
+import { getFuntions, dashboardState } from "../../utils";
 
-const useDashBoard = () => useContext(DashboardContext);
+const useDashBoard = () => {
+  const [state, setState] = useState(dashboardState);
+
+  return useMemo(() => ({
+    ...state, ...getFuntions(setState, state)
+  }),
+    [state]
+  );
+};
 
 export {
   useDashBoard as default

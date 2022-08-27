@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Layout } from "../../../../../../types";
 
 import useButton from "../../hooks/useButton";
-import useDashboard from "../../../../hooks/useDashboard";
+import useDashboardContext from "../../../../hooks/useDashboardContext";
 
 // components
 import LayoutSelector from "../../../../../../components/LayoutSelector";
@@ -15,10 +15,10 @@ export interface HeaderProps {
 }
 
 export const Header: FC<HeaderProps> = (props) => {
-  const home = useDashboard();
+  const context = useDashboardContext();
   const Button = useButton(props.showButton);
 
-  home.useHeaderButton(Button);
+  context.useHeaderButton(Button);
 
   return (
     <SubViewHeader sticky={ true }>
