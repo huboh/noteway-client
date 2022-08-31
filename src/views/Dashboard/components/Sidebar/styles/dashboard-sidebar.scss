@@ -1,21 +1,5 @@
 .dashboard-sidebar {
   .sidebar-header {
-    padding-left: 0;
-    padding-right: 0;
-    justify-content: space-between;
-
-    .logo {
-      margin: 0;
-      width: 7em;
-    }
-
-    button {
-      margin-inline-start: auto;
-    }
-  }
-
-  .sidebar-footer {
-    padding-left: 0;
-    padding-right: 0;
+    gap: 1.5rem;
   }
 }
