@@ -3,7 +3,7 @@ import { useRef, useEffect, useCallback } from "react";
 export type Callback = (...args: any) => any;
 export type UseDebouncer = <T extends Callback, U extends Parameters<T>>(callback: T, timeout?: number) => (...params: U) => void;
 
-export const useDebouncer: UseDebouncer = (callback, timeout = 700) => {
+export const useDebouncer: UseDebouncer = (callback, timeout = 500) => {
   const timeoutRef = useRef(0);
 
   useEffect(() => () => {
