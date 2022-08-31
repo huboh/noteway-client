@@ -1,21 +1,18 @@
 import "../../styles/sidebar-footer.scss";
 
-import { FC, useMemo } from 'react';
-import { joinClassStrings } from "../../../../utils";
-
-export interface SidebarFooterProps {
-  className?: string;
-}
+import { FC } from 'react';
+import { SidebarFooterProps } from '../../types';
+import { useClassStrings } from "../../../../hooks/useClassStrings";
 
 const SidebarFooter: FC<SidebarFooterProps> = (props) => {
-  const classString = useMemo(() => joinClassStrings("sidebar-footer", props.className),
-    [props.className]
-  );
+  const children = props.children;
+  const classString = useClassStrings("sidebar-footer", props.className);
 
   return (
-    <footer className={ classString }>
-      { props.children }
-    </footer>
+    <footer
+      children={ children }
+      className={ classString }
+    />
   );
 };
 

@@ -1,11 +1,10 @@
 .sidebar {
-  --sidebar-padding: 0.6em;
+  --sidebar-padding: 0.7em;
 
   z-index: 1;
   height: 100vh;
   overflow: auto;
   width: var(--sidebar-width);
-  padding: 0 var(--sidebar-padding);
   background-color: var(--background-color);
   border-inline-end: 1px solid var(--border-color);
 

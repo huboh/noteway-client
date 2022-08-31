@@ -1,7 +1,8 @@
 .sidebar-header {
   width: 100%;
-  margin-bottom: 2em;
-  padding: 0.7em var(--sidebar-padding);
+  height: 3.58rem;
+  padding: var(--sidebar-padding);
+  border-bottom: 1px solid var(--border-color);
 
   display: flex;
   align-items: center;

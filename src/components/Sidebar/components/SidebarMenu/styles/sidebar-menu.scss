@@ -1,7 +1,8 @@
 .sidebar-menu {
   width: 100%;
+  padding: var(--sidebar-padding);
 
   &:not(:last-of-type) {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 }

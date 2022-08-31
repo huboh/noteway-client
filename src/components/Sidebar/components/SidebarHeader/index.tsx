@@ -1,19 +1,18 @@
 import "../../styles/sidebar-header.scss";
 
 import { FC } from 'react';
-import { joinClassStrings } from "../../../../utils";
-
-export interface SidebarHeaderProps {
-  className?: string;
-}
+import { SidebarHeaderProps } from '../../types';
+import { useClassStrings } from "../../../../hooks/useClassStrings";
 
 const SidebarHeader: FC<SidebarHeaderProps> = (props) => {
-  const classString = joinClassStrings("sidebar-header", props.className);
+  const children = props.children;
+  const classString = useClassStrings("sidebar-header", props.className);
 
   return (
-    <div className={ classString }>
-      { props.children }
-    </div>
+    <div
+      children={ children }
+      className={ classString }
+    />
   );
 };
 
