@@ -1,0 +1,37 @@
+:root {
+  --text-color: rgb(0, 0, 0);
+  --text-color-light: rgba(0, 0, 0, 0.6);
+  --text-color-grey: rgba(0, 0, 0, 0.8);
+
+  --background-color: rgb(255, 255, 255);
+  --background-color-grey: rgba(196, 196, 196);
+  --background-color-grey-dark: rgb(189, 189, 189);
+  --background-color-grey-light: rgba(196, 196, 196, 0.1);
+  --background-color-grey-hover: rgba(219, 219, 219, 0.3);
+
+  --background-color-dark: rgba(219, 219, 219, 0.7);
+  --background-color-dark-hover: rgb(219, 219, 219);
+  --background-color-dark-active: rgba(219, 219, 219, 0.5);
+
+  --primary-color: rgb(162, 2, 188);
+  --primary-color-dark: rgb(96, 0, 110);
+  --primary-color-disabled: rgb(122, 50, 133);
+  --primary-color-light: rgba(163, 2, 188, 0.1);
+  --primary-color-hover: rgba(163, 2, 188, 0.2);
+  --primary-color-active: rgba(112, 0, 129, 0.6);
+  --primary-color-box-shadow: 0 0 10px rgba(112, 0, 129, 0.6);
+
+  --border-color: rgb(12, 12, 12);
+  --border-color-light: rgba(196, 196, 196, 0.7);
+  --border: 1px solid var(--border-color-light);
+
+  --error-color: rgb(255, 0, 0);
+  --error-color-light: rgb(255, 0, 0, 0.05);
+
+  --success-color: rgba(3, 174, 71, 1);
+  --success-color-light: rgb(227, 255, 238);
+
+  --box-shadow-light: 2px 2px 10px 0px rgba(0, 0, 0, 0.15);
+  --box-shadow-dark: 0 0 10px 0px rgba(0, 0, 0, 0.349);
+  --box-shadow-hover: 0 0 10px 6px rgba(0, 0, 0, 0.349);
+}

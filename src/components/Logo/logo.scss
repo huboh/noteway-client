@@ -1,11 +1,13 @@
 .logo-wrapper {
   margin: 0;
   padding: 0;
-  text-decoration: none;
+  width: 8em;
 
   .logo {
-    width: 5em;
     margin: 0;
     padding: 0;
+    width: 100%;
+    text-decoration: none;
+    color: var(--text-color);
   }
 }

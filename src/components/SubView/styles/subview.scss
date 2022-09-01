@@ -1,0 +1,27 @@
+.subview {
+  --padding: 1rem;
+
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--background-color);
+  transition: background-color 200ms ease, color 200ms ease;
+
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--text-color-secondary);
+
+    &:hover {
+      background-color: var(--primary-color);
+    }
+  }
+}

@@ -1,0 +1,76 @@
+.user-profile-card {
+  width: 100%;
+  padding: 0.6em;
+  user-select: none;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-secondary);
+
+  gap: 0.6em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+
+  .header {
+    gap: 0.6em;
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .footer {
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .user-avatar-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: var(--avatar-background-color);
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+  }
+
+  .user-details-wrapper {
+    width: 100%;
+    overflow: hidden;
+
+    * {
+      width: 100%;
+      font-weight: 500;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .name {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2em;
+      color: var(--text-color);
+      text-transform: capitalize;
+    }
+
+    .email {
+      font-size: 0.9rem;
+      color: var(--text-color-secondary);
+    }
+  }
+}

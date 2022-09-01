@@ -1,0 +1,14 @@
+.header {
+  --header-padding: 0.6em;
+
+  width: 100%;
+  padding: var(--header-padding);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  & .navbar {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,41 @@
+.theme-switcher-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  outline: none;
+  padding: 0.3em;
+  user-select: none;
+  background-color: transparent;
+  transition: background-color 200ms ease;
+  border-radius: var(--border-radius);
+  border-radius: calc(var(--border-radius) / 2);
+
+  &:not(:last-of-type) {
+    margin-inline-end: var(--padding);
+  }
+
+  svg {
+    font-size: 1.2rem;
+    stroke: var(--text-color);
+  }
+
+  &.active {
+    background-color: var(--background-color);
+
+    &:focus,
+    &:hover {
+      background-color: var(--background-color);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    background-color: var(--hover-color);
+  }
+
+  &:active {
+    background-color: var(--active-color);
+  }
+}

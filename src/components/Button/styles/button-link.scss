@@ -1,0 +1,26 @@
+.button.button-link {
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+
+  padding: 0.5em 1.4em;
+  width: max-content;
+
+  font-size: 1rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  &.transparent {
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+
+  &:focus {
+    transform: translateY(-2px);
+  }
+}

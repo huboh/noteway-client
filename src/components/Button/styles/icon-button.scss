@@ -1,0 +1,41 @@
+.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  outline: none;
+  padding: 0.4em;
+  user-select: none;
+  border-radius: 5px;
+  transition: transform 200ms ease;
+  background-color: transparent;
+
+  svg {
+    display: block;
+    font-size: 1.3rem;
+    stroke: var(--text-color-secondary);
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    background-color: var(--hover-color);
+
+    svg {
+      stroke: var(--text-color);
+    }
+  }
+
+  &:focus {
+    background-color: var(--hover-color);
+
+    svg {
+      stroke: var(--text-color);
+    }
+  }
+
+  &:active {
+    transform: translateY(1px);
+    background-color: var(--active-color);
+  }
+}

@@ -1,8 +1,10 @@
+import { createContext } from 'react';
+
 export interface NewtworkInfo {
   isOnline: boolean;
-  networkSpeed: string | undefined;
+  networkSpeed?: string;
   networkCondition: 'online' | 'offline';
-  networkType: NetworkInformation['type'] | undefined;
+  networkType?: NetworkInformation['type'];
 }
 
 export const navigatorConnection = navigator.connection ?? (
@@ -15,3 +17,5 @@ export const getNetworkStatus = (): NewtworkInfo => ({
   networkType: navigatorConnection?.type,
   isOnline: navigator.onLine,
 });
+
+export const NetworkInformationContext = createContext(getNetworkStatus());

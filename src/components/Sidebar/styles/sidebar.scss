@@ -1,0 +1,27 @@
+.sidebar {
+  --sidebar-padding: 0.7em;
+
+  z-index: 1;
+  height: 100vh;
+  overflow: auto;
+  width: var(--sidebar-width);
+  background-color: var(--background-color);
+  border-inline-end: 1px solid var(--border-color);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--text-color-secondary);
+
+    &:hover {
+      background-color: var(--primary-color);
+    }
+  }
+}

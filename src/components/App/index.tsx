@@ -1,16 +1,21 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 
-import Home from "../../views/Home";
-
+import Loader from "../Loader";
+import Router from "../Router";
+import AppProviders from '../../providers';
+import ErrorBoundary from "../ErrorBoundary";
 
 const App: FC = () => {
   return (
-    <section>
-      <Home />
-    </section>
+    <ErrorBoundary>
+      <AppProviders>
+        <Suspense fallback={ <Loader /> }>
+          <Router />
+        </Suspense>
+      </AppProviders>
+    </ErrorBoundary>
   );
 };
-
 
 export {
   App as default
